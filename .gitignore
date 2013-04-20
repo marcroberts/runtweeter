@@ -12,6 +12,7 @@ test/tmp
 test/version_tmp
 tmp
 config.yml
+debug.log
 
 # YARD artifacts
 .yardoc

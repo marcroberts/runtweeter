@@ -24,7 +24,7 @@ if run['is_live'] # only continue if he's currently running
 
 	ts = started + point['timestamp']
 
-	if (ts > Time.now - 600) # last update less than 10 mins ago ?
+	if (ts > Time.now - RECENCY) # last update less than 10 mins ago ?
 
 		point_name = Geocoder.search("#{point['latitude']},#{point['longitude']}")
 
@@ -36,6 +36,16 @@ if run['is_live'] # only continue if he's currently running
 
 		Twitter.update_with_media(text, open(map_url))
 
+		LOG.info "tweeted" if DEBUG
+
+	else
+
+		LOG.info "old data" if DEBUG
+
 	end
+
+else
+
+	LOG.info "not live" if DEBUG
 
 end
